@@ -12,9 +12,13 @@
         <title>Top Up End</title>
     </head>
     <body>
-        <h1>ID G9823Z73</h1>
+        <%
+            String rfid = (String)request.getAttribute("rfid");
+            int jml = (Integer)request.getAttribute("jml");
+            %>
+        <h1>ID <%=rfid%></h1>
         <h1>Telah Di Top Up Sebesar</h1>
-        <h1>Rp100.000,-</h1>
+        <h1>Rp<%=jml+""%>,-</h1>
         <button type="button">Keluar</button>
     </body>
 </html>
