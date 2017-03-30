@@ -12,9 +12,12 @@
         <title>Top up</title>
     </head>
     <body>
-        <h1>Masukan No. ID Driver Anda: </h1>
-        <form>
+        
+        <form action="TopUpServlet" method="POST">
+            <h1>No. ID Driver: </h1>
             <input type="text" name="idDriver"><br>
+            <h1>Jumlah Top Up: </h1>
+            <input type="text" name="jmlTopUp"><br>
             <input type="submit" value="OK">
         </form>
     </body>
