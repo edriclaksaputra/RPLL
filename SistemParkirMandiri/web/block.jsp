@@ -13,10 +13,10 @@
     </head>
     <body>
         <h1>Masukkan No.ID Driver Anda: </h1>
-         <form>
+         <form action="UpdateCofirm" method="POST">
             <input type="text" name="idDriver" value=""><br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" href="confirmBlock">
           </form> 
-        <br><input type="submit" value="Back">
+        
     </body>
 </html>

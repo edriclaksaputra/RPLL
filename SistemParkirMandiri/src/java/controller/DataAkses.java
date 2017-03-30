@@ -54,4 +54,15 @@ public class DataAkses {
         session.close();
         return true;
     }
+    
+    public boolean updateConfirm (User newUser){
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        User StatusKartu = (User)session.get(User.class,newUser.getRfid());
+        StatusKartu.setStatusKartu(newUser.getStatusKartu());       
+        tx.commit();
+        session.close();
+        return true;
+    }
+
 }
