@@ -12,9 +12,17 @@
         <title>SPM || Keluar Pakiran</title>
     </head>
     <body>
-        <h1 style="text-align: center; font-size: 42px">Masukan Nomor Kendaraan Anda</h1>
-        <input style="margin-left: 37%; width: 500px; height: 50px" type="text" name="noKend"><br>
-        <button style="float: right; margin-right: 25%">OK</button><br>
-        <button style="margin-left: 10%">Cancel</button>
+        <form method='get' action="cekKendaraanServlet">
+            <%  String failed = request.getParameter("failed");
+                if (failed != null) {
+                    out.println("<span style='color:red;'>" + failed + "</span>");
+                }
+            %>
+            <h1 style="text-align: center; font-size: 42px">Masukan Nomor Kendaraan Anda</h1>
+            <input style="margin-left: 37%; width: 500px; height: 50px" type="text" name="noKend"><br>
+            <br>
+            <label style=" float: left; margin-left: 50%;"></label>
+            <input type='submit' value='OK' name='ok' style="float:left;margin-left: 50%"/>
+        </form>
     </body>
 </html>

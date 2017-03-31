@@ -46,12 +46,17 @@ public class DataAkses {
         Session session = factory.openSession();
         Transaction tx = session.beginTransaction();
         User user = (User)session.get(User.class, baru.getRfid());
-        user.setSaldo(baru.getSaldo());
+
+        System.out.println("UPDATE = "+ user.getSaldo());
+        System.out.println("UPDATE 2 = "+ baru.getSaldo());
+        int sum = user.getSaldo()+baru.getSaldo();
+        user.setSaldo(sum);
         tx.commit();
         session.close();
         return true;
     }
     
+
     public boolean insertUser(User user){
         Session session = factory.openSession();
         ArrayList<User> hasil = null;
@@ -61,7 +66,15 @@ public class DataAkses {
         } catch(Exception e){
             System.out.println("gagal insert");
         }
+        return true;
+    }
         
+
+    public boolean updateConfirm (User newUser){
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        User StatusKartu = (User)session.get(User.class,newUser.getRfid());
+        StatusKartu.setStatusKartu(newUser.getStatusKartu()); 
         tx.commit();
         session.close();
         return true;

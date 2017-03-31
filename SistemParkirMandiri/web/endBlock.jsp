@@ -12,11 +12,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>ID HG999</h1>
+        <%
+            String rfid = (String)request.getAttribute("rfid");
+            %>
+        <h1>ID <%=rfid%></h1>
         <br>
         <h1>Telah Di Block</h1>
         <br>
-        <input type="submit" value="Back">
+        <input type="submit" value="Back" href="block.jsp">
         
     </body>
 </html>
