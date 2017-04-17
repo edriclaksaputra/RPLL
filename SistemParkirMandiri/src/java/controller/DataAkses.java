@@ -7,7 +7,10 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import model.Mobil;
+import model.Transaksi;
 import model.User;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,6 +33,7 @@ public class DataAkses {
         }
     }
     
+    //User
     public User getUser(String id){
         Session session = factory.openSession();
         ArrayList<User> hasil = null;
@@ -62,6 +66,38 @@ public class DataAkses {
             System.out.println("gagal insert");
         }
         
+        tx.commit();
+        session.close();
+        return true;
+    }
+    
+    //Mobil
+    
+    public boolean statusNoKend(String noKend){
+        boolean status = false;
+        Session session = factory.openSession();
+        ArrayList<Mobil> hasil = null;
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("from Mobil where noKendaraan = "+noKend);
+        hasil= (ArrayList<Mobil>) q.list();
+        for( Mobil kendaraan : hasil){
+            Hibernate.initialize(tx);
+        }
+        tx.commit();
+        if(hasil != null){
+            status = true;
+        }
+        return status;
+    }
+    
+    public boolean insertParkiran(Transaksi X){
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        try{
+           session.save(X);
+        } catch(Exception e){
+            System.out.println("gagal insert");
+        }
         tx.commit();
         session.close();
         return true;

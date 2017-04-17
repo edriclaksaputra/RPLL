@@ -4,17 +4,24 @@
     Author     : Edric-PC
 --%>
 
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>SPM || Keluar Pakiran</title>
+        <title>SPM || Masuk Pakiran</title>
     </head>
     <body>
-        <h1 style="text-align: center; font-size: 42px">Masukan Nomor Kendaraan Anda</h1>
-        <input style="margin-left: 37%; width: 500px; height: 50px" type="text" name="noKend"><br>
-        <button style="float: right; margin-right: 25%">OK</button><br>
-        <button style="margin-left: 10%">Cancel</button>
+        
+        <form method="post" action="masukParkiranServlet">
+            <h1>Masukan Nomor Kendaraan Anda</h1>
+            <input type="text" name="noKend"><br>
+            <h1>Id Anda</h1>
+            <input type="text" name="Id"><br>
+            <input type="submit" value="Ok">
+        </form>
     </body>
 </html>

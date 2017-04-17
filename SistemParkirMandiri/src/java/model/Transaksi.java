@@ -81,6 +81,10 @@ public class Transaksi  implements java.io.Serializable {
         this.statusTrasaksi = statusTrasaksi;
     }
 
+    public void setStartTime(String time) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 
 

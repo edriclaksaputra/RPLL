@@ -51,6 +51,10 @@ public class Mobil  implements java.io.Serializable {
         this.transaksis = transaksis;
     }
 
+    public void setUser(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 
 
