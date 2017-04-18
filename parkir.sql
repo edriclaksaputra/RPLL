@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2017 at 10:09 AM
--- Server version: 5.6.21
--- PHP Version: 5.5.19
+-- Generation Time: 18 Apr 2017 pada 04.22
+-- Versi Server: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE IF NOT EXISTS `admin` (
@@ -34,7 +34,20 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mobil`
+-- Struktur dari tabel `daftarparkir`
+--
+
+CREATE TABLE IF NOT EXISTS `daftarparkir` (
+  `idUser` varchar(20) NOT NULL,
+  `noKend` varchar(10) NOT NULL,
+  `startTime` date NOT NULL,
+`idParkirMasuk` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mobil`
 --
 
 CREATE TABLE IF NOT EXISTS `mobil` (
@@ -45,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `mobil` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `retailer`
+-- Struktur dari tabel `retailer`
 --
 
 CREATE TABLE IF NOT EXISTS `retailer` (
@@ -56,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `retailer` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Struktur dari tabel `transaksi`
 --
 
 CREATE TABLE IF NOT EXISTS `transaksi` (
@@ -72,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `transaksi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -91,6 +104,12 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 ALTER TABLE `admin`
  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `daftarparkir`
+--
+ALTER TABLE `daftarparkir`
+ ADD PRIMARY KEY (`idParkirMasuk`);
 
 --
 -- Indexes for table `mobil`
@@ -126,22 +145,27 @@ ALTER TABLE `user`
 ALTER TABLE `admin`
 MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `daftarparkir`
+--
+ALTER TABLE `daftarparkir`
+MODIFY `idParkirMasuk` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `retailer`
 --
 ALTER TABLE `retailer`
 MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `mobil`
+-- Ketidakleluasaan untuk tabel `mobil`
 --
 ALTER TABLE `mobil`
 ADD CONSTRAINT `rfid_constraint` FOREIGN KEY (`rfid`) REFERENCES `user` (`rfid`);
 
 --
--- Constraints for table `transaksi`
+-- Ketidakleluasaan untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
 ADD CONSTRAINT `noKendaraan_constraint` FOREIGN KEY (`noKendaraan`) REFERENCES `mobil` (`noKendaraan`);
