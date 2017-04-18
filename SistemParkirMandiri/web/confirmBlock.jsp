@@ -14,10 +14,13 @@
     <body>
         <h1>Apakah Anda yakin untuk memblock ID</h1>
         <br>
-        <h1>GHHHHH11111</h1>
+        <%
+            String rfid = (String)request.getAttribute("rfid");
+            %>
+        <h1>ID <%=rfid%></h1>
         
-        <input type="submit" value="YES">
-        <input type="submit" value="NO">
+        <input type="submit" value="YES" href="endBlock">
+        <input type="submit" value="NO" href="block.jsp">
         
         
     </body>

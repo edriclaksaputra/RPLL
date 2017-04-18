@@ -15,7 +15,6 @@
         <title>SPM || Masuk Pakiran</title>
     </head>
     <body>
-        
         <form method="post" action="masukParkiranServlet">
             <h1>Masukan Nomor Kendaraan Anda</h1>
             <input type="text" name="noKend"><br>
