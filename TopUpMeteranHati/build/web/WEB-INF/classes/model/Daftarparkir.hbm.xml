@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 18, 2017 9:31:10 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Apr 20, 2017 10:35:00 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.Daftarparkir" table="daftarparkir" catalog="parkir" optimistic-lock="version">
         <id name="idParkirMasuk" type="java.lang.Integer">

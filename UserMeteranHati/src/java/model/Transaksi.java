@@ -1,5 +1,5 @@
 package model;
-// Generated Apr 17, 2017 6:33:02 PM by Hibernate Tools 4.3.1
+// Generated Apr 20, 2017 11:31:18 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -11,24 +11,18 @@ public class Transaksi  implements java.io.Serializable {
 
 
      private Date date;
-     private Mobil mobil;
-     private String noParkir;
-     private int bill;
-     private Date startTime;
-     private Date endTime;
-     private String statusTrasaksi;
+     private String rfid;
+     private String statusTransaksi;
+     private String keterangan;
 
     public Transaksi() {
     }
 
-    public Transaksi(Date date, Mobil mobil, String noParkir, int bill, Date startTime, Date endTime, String statusTrasaksi) {
+    public Transaksi(Date date, String rfid, String statusTransaksi, String keterangan) {
        this.date = date;
-       this.mobil = mobil;
-       this.noParkir = noParkir;
-       this.bill = bill;
-       this.startTime = startTime;
-       this.endTime = endTime;
-       this.statusTrasaksi = statusTrasaksi;
+       this.rfid = rfid;
+       this.statusTransaksi = statusTransaksi;
+       this.keterangan = keterangan;
     }
    
     public Date getDate() {
@@ -38,47 +32,26 @@ public class Transaksi  implements java.io.Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
-    public Mobil getMobil() {
-        return this.mobil;
+    public String getRfid() {
+        return this.rfid;
     }
     
-    public void setMobil(Mobil mobil) {
-        this.mobil = mobil;
+    public void setRfid(String rfid) {
+        this.rfid = rfid;
     }
-    public String getNoParkir() {
-        return this.noParkir;
-    }
-    
-    public void setNoParkir(String noParkir) {
-        this.noParkir = noParkir;
-    }
-    public int getBill() {
-        return this.bill;
+    public String getStatusTransaksi() {
+        return this.statusTransaksi;
     }
     
-    public void setBill(int bill) {
-        this.bill = bill;
+    public void setStatusTransaksi(String statusTransaksi) {
+        this.statusTransaksi = statusTransaksi;
     }
-    public Date getStartTime() {
-        return this.startTime;
-    }
-    
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-    public Date getEndTime() {
-        return this.endTime;
+    public String getKeterangan() {
+        return this.keterangan;
     }
     
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-    public String getStatusTrasaksi() {
-        return this.statusTrasaksi;
-    }
-    
-    public void setStatusTrasaksi(String statusTrasaksi) {
-        this.statusTrasaksi = statusTrasaksi;
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
     }
 
 

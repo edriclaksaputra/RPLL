@@ -36,7 +36,7 @@ public class DataAkses {
        Session session = factory.openSession();
        ArrayList<User> hasil = null;
        Transaction tx = session.beginTransaction();
-       Query q = session.createQuery("from User where rfid = "+id);
+       Query q = session.createQuery("from User where rfid = '"+id+"'");
        hasil = (ArrayList<User>) q.list();
        tx.commit();
        session.close();
@@ -53,6 +53,7 @@ public class DataAkses {
        session.save(user);
        tx.commit();
        session.close();
+       System.out.println("yes man!");
        return true;
    }
    

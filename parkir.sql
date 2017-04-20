@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 Apr 2017 pada 04.22
--- Versi Server: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Apr 20, 2017 at 11:40 AM
+-- Server version: 5.6.21
+-- PHP Version: 5.5.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,18 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
---
-
-CREATE TABLE IF NOT EXISTS `admin` (
-`id` int(20) NOT NULL,
-  `name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `daftarparkir`
+-- Table structure for table `daftarparkir`
 --
 
 CREATE TABLE IF NOT EXISTS `daftarparkir` (
@@ -47,45 +36,20 @@ CREATE TABLE IF NOT EXISTS `daftarparkir` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mobil`
---
-
-CREATE TABLE IF NOT EXISTS `mobil` (
-  `noKendaraan` varchar(20) NOT NULL,
-  `rfid` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `retailer`
---
-
-CREATE TABLE IF NOT EXISTS `retailer` (
-`id` int(20) NOT NULL,
-  `companyName` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `transaksi`
+-- Table structure for table `transaksi`
 --
 
 CREATE TABLE IF NOT EXISTS `transaksi` (
-  `date` date NOT NULL,
-  `noKendaraan` varchar(20) NOT NULL,
-  `noParkir` varchar(20) NOT NULL,
-  `bill` int(20) NOT NULL,
-  `startTime` time NOT NULL,
-  `endTime` time NOT NULL,
-  `statusTrasaksi` varchar(20) NOT NULL
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `rfid` varchar(20) NOT NULL,
+  `statusTransaksi` varchar(20) NOT NULL,
+  `keterangan` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -96,14 +60,17 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `user`
 --
 
+INSERT INTO `user` (`rfid`, `saldo`, `nama`, `statusKartu`) VALUES
+('ID001', 10000, 'TASYA', 'block'),
+('ID002', 10000, 'Fiona Natasha Valentio', 'aktif'),
+('ID003', 10000, 'AlienBros2', 'block');
+
 --
--- Indexes for table `admin`
+-- Indexes for dumped tables
 --
-ALTER TABLE `admin`
- ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `daftarparkir`
@@ -112,22 +79,10 @@ ALTER TABLE `daftarparkir`
  ADD PRIMARY KEY (`idParkirMasuk`);
 
 --
--- Indexes for table `mobil`
---
-ALTER TABLE `mobil`
- ADD PRIMARY KEY (`noKendaraan`), ADD KEY `rfid` (`rfid`);
-
---
--- Indexes for table `retailer`
---
-ALTER TABLE `retailer`
- ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
- ADD PRIMARY KEY (`date`), ADD KEY `noKendaraan` (`noKendaraan`);
+ ADD PRIMARY KEY (`date`), ADD KEY `rfid` (`rfid`);
 
 --
 -- Indexes for table `user`
@@ -140,36 +95,10 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `daftarparkir`
 --
 ALTER TABLE `daftarparkir`
 MODIFY `idParkirMasuk` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `retailer`
---
-ALTER TABLE `retailer`
-MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `mobil`
---
-ALTER TABLE `mobil`
-ADD CONSTRAINT `rfid_constraint` FOREIGN KEY (`rfid`) REFERENCES `user` (`rfid`);
-
---
--- Ketidakleluasaan untuk tabel `transaksi`
---
-ALTER TABLE `transaksi`
-ADD CONSTRAINT `noKendaraan_constraint` FOREIGN KEY (`noKendaraan`) REFERENCES `mobil` (`noKendaraan`);
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

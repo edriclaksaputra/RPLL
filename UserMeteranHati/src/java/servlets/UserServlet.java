@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Daftarparkir;
-import model.Mobil;
 import model.Transaksi;
 
 /**
@@ -112,14 +111,14 @@ public class UserServlet extends HttpServlet {
             }
             
             int biaya = jam * 2000;
-            Mobil mobil;
-            Transaksi transaksi = new Transaksi();
-            transaksi.setBill(biaya);
-            transaksi.setDate(waktu);
-            transaksi.setEndTime(date);
-            transaksi.setNoParkir(parkCar.getNoKend());
-            transaksi.setStartTime(parkCar.getStartTime());
-            transaksi.setStatusTrasaksi("lunas");
+//            Mobil mobil;
+//            Transaksi transaksi = new Transaksi();
+//            transaksi.setBill(biaya);
+//            transaksi.setDate(waktu);
+//            transaksi.setEndTime(date);
+//            transaksi.setNoParkir(parkCar.getNoKend());
+//            transaksi.setStartTime(parkCar.getStartTime());
+//            transaksi.setStatusTrasaksi("lunas");
             
             int idPard = parkCar.getIdParkirMasuk();
             if(da.deleteParkir(idPard)){

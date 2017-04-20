@@ -63,6 +63,7 @@ public class AddCard extends HttpServlet {
         processRequest(request, response);
         System.out.println("insert get AddCard");
         String idCard = request.getParameter("id-blocked");
+        System.out.println("id blocked: "+idCard);
         DataAkses da = new DataAkses();
         boolean status = da.cekCard(idCard);
         if(status){
@@ -87,10 +88,13 @@ public class AddCard extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
         System.out.println("insert post AddCard");
+        System.out.println(request.getAttributeNames().toString());
         String idCard = request.getParameter("id-card");
         String name = request.getParameter("name");
+        System.out.println("id: "+idCard);
+        System.out.println("name: "+name);
         DataAkses da = new DataAkses();
         boolean status = da.cekCard(idCard);
         if(status){
@@ -99,7 +103,6 @@ public class AddCard extends HttpServlet {
             user.setRfid(idCard);
             user.setSaldo(10000);
             user.setStatusKartu("aktif");
-            
             if(da.insertUser(user)){
                 System.out.println("berhasil menambahkan user");
             }else{

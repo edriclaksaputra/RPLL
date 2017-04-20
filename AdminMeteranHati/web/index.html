@@ -245,15 +245,12 @@
 			</div>
 			<div class="row row-bottom-padded-md">
                             <form method="post" action="AddCard">
-				<div class="col-md-12 to-animate">
-					<div class="form-group margin-bottom ">
-						<label for="id-card" class="sr-only">Id Card</label>
-						<input id="id-card" class="form-control" placeholder="Id Card" type="text">
-                        <label for="name" class="sr-only">Card Id</label>
-						<input id="name" class="form-control" placeholder="Full Name" type="text">
-                        <input class="btn btn-primary btn-lg" value="Submit" type="submit">
-                    </div>
-				</div>
+                                <label for="id-card" class="sr-only">Id Card</label>
+                                <input name="id-card" id="id-card" placeholder="Id Card" type="text"/>
+                                <label for="name" class="sr-only">Card Id</label>
+                                <input name="name" id="name" placeholder="Full Name" type="text">
+                                <input class="btn btn-primary btn-lg" value="Submit" type="submit">
+
                             </form>
                     
 			</div>
@@ -276,11 +273,11 @@
 	       <div class="col-md-12 to-animate">
                 <div class="form-group ">
                     <label for="id-blocked" class="sr-only"></label>
-                    <input id="id-blocked" class="form-control" placeholder="Id Card" type="text">
+                    <input name="id-blocked" id="id-blocked" class="form-control" placeholder="Id Card" type="text">
                 </div>
                <div class="form-group ">
                     <label for="reason-blocked" class="sr-only"></label>
-                   <textarea id="reason-blocked" class="form-control" rows="5" placeholder="Reason Blocked" type="text"></textarea>
+                   <textarea name="reason-blocked" id="reason-blocked" class="form-control" rows="5" placeholder="Reason Blocked"></textarea>
                 </div>
                 <center>
                     <div class="form-group ">

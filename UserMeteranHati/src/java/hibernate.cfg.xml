@@ -8,11 +8,8 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <mapping resource="model/User.hbm.xml"/>
-    <mapping resource="model/Mobil.hbm.xml"/>
-    <mapping resource="model/Admin.hbm.xml"/>
-    <mapping resource="model/Retailer.hbm.xml"/>
-    <mapping resource="model/Transaksi.hbm.xml"/>
     <mapping resource="model/Daftarparkir.hbm.xml"/>
+    <mapping resource="model/Transaksi.hbm.xml"/>
+    <mapping resource="model/User.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

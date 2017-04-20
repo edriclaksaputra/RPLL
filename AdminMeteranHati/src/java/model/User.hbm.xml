@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 17, 2017 3:25:53 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Apr 20, 2017 10:21:44 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.User" table="user" catalog="parkir" optimistic-lock="version">
         <id name="rfid" type="string">
@@ -17,11 +17,5 @@
         <property name="statusKartu" type="string">
             <column name="statusKartu" length="20" not-null="true" />
         </property>
-        <set name="mobils" table="mobil" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="rfid" length="20" not-null="true" />
-            </key>
-            <one-to-many class="model.Mobil" />
-        </set>
     </class>
 </hibernate-mapping>
