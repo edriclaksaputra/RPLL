@@ -19,10 +19,10 @@ import model.User;
 
 /**
  *
- * @author Lenovo
+ * @author Edric-PC
  */
-@WebServlet(name = "TopUpServlet", urlPatterns = {"/TopUpServlet"})
-public class TopUpServlet extends HttpServlet {
+@WebServlet(name = "Login", urlPatterns = {"/Login"})
+public class Login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +35,19 @@ public class TopUpServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Login</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -50,6 +62,28 @@ public class TopUpServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        String rfid = request.getParameter("rfid");
+        User userLogin = null;
+        try {
+            userLogin = new DataAkses().getUser(rfid);
+        } catch (Exception e) {
+            System.out.println("Username Tidak Terdaftar");
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp?hasil=KARTU TIDAK TERDAFTAR UWOWOWO !!");
+            rd.forward(request, response);
+        }
+        
+        if(userLogin==null){
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp?hasil=KARTU TIDAK TERDAFTAR UWOWOWO !!");
+            rd.forward(request, response);
+        }
+        else{
+            HttpSession session = request.getSession();
+            session.setAttribute("rfid", rfid);
+            RequestDispatcher rd = request.getRequestDispatcher("topup.jsp");
+            rd.forward(request, response);
+        }
     }
 
     /**
@@ -63,27 +97,7 @@ public class TopUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
-        String id = request.getParameter("rfid");
-        int duit = Integer.parseInt(request.getParameter("duit"));
-        
-        boolean status = false;
-        
-        status = new DataAkses().updateDuitUser(id, duit);
-       
-        System.out.println(status);
-        if(status == true){
-            User userLogin = new DataAkses().getUser(id);
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp?hasil=Terimakasih, username dengan id : "+id+" telah berhasil di top up sebesar : "+duit+" Rupiah, Total Saldo : "+userLogin.getSaldo());
-            rd.forward(request, response);
-        }
-        else{
-            RequestDispatcher rd = request.getRequestDispatcher("topup.jsp?hasil=MAMPUS KARTU DI BLOCK");
-            rd.forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**
