@@ -209,10 +209,12 @@
 		          <ul class="nav navbar-nav navbar-right">
 		            <li class="active"><a href="#" data-nav-section="home"><span>Home</span></a></li>
 		            <li><a href="#" data-nav-section="add"><span>Add New Card</span></a></li>
-                    <li><a href="#" data-nav-section="block"><span>Block A Card</span></a></li>
+                            <li><a href="#" data-nav-section="block"><span>Block A Card</span></a></li>
+                            <li><a href="#" data-nav-section="unblock"><span>Unblock A Card</span></a></li>
 		          </ul>
 		        </div>
 			    </nav>
+                                
 			  <!-- </div> -->
 		  </div>
 	</header>
@@ -235,6 +237,8 @@
 				</div>
 			</div>
 		</div>
+                
+
 		<div class="slant"></div>
 	</section>
 
@@ -263,6 +267,7 @@
                                     </div>
                                     <div class="form-group">
                                         <input class="btn btn-primary btn-lg" value="Submit" type="submit">
+                                        <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
                                     </div>
                                 </div>
                             </form>
@@ -283,7 +288,7 @@
 					</div>
 				</div>
 			</div>
-            <form action="AddCard" method="get">
+            <form action="BlockCard" method="post">
 	       <div class="col-md-12 to-animate">
                 <div class="form-group ">
                     <label for="id-blocked" class="sr-only"></label>
@@ -301,7 +306,40 @@
             </div>
             </form>
         </div>
-    </section>	
+    </section>
+        
+        <section id="fh5co-testimonials" data-section="unblock">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 section-heading text-center">
+					<h2 class="to-animate">Unblock A Card</h2>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 subtext to-animate">
+							<h3>Please fill in the following form for unblocking a card.</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+            <form action="UnblockCard" method="post">
+	       <div class="col-md-12 to-animate">
+                <div class="form-group ">
+                    <label for="id-unblocked" class="sr-only"></label>
+                    <input name="id-unblocked" id="id-unblocked" class="form-control" placeholder="Id Card" type="text">
+                </div>
+               <div class="form-group ">
+                    <label for="reason-unblocked" class="sr-only"></label>
+                   <textarea name="reason-unblocked" id="reason-unblocked" class="form-control" rows="5" placeholder="Reason unblocked"></textarea>
+                </div>
+                <center>
+                    <div class="form-group ">
+                        <input class="btn btn-primary btn-lg" value="Submit" type="submit">
+                    </div>
+                </center>
+            </div>
+            </form>
+        </div>
+    </section>
+        
 	<footer id="footer" role="contentinfo">
 		<a href="#" class="gotop js-gotop"><i class="icon-arrow-up2"></i></a>
 		<div class="container">

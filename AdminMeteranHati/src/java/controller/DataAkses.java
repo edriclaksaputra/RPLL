@@ -6,6 +6,7 @@
 package controller;
 
 import java.util.ArrayList;
+import model.Transaksi;
 import model.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -57,11 +58,30 @@ public class DataAkses {
        return true;
    }
    
+   public boolean insertTransaksi(Transaksi t){
+       Session session = factory.openSession();
+       Transaction tx = session.beginTransaction();
+       session.save(t);
+       tx.commit();
+       session.close();
+       return true;
+   }
+   
    public boolean blockUser(String id){
        Session session = factory.openSession();
        Transaction tx = session.beginTransaction();
        User oldUser = (User)session.get(User.class, id);
        oldUser.setStatusKartu("block");
+       tx.commit();
+       session.close();
+       return true;
+   }
+   
+   public boolean unblockUser(String id){
+       Session session = factory.openSession();
+       Transaction tx = session.beginTransaction();
+       User oldUser = (User)session.get(User.class, id);
+       oldUser.setStatusKartu("aktif");
        tx.commit();
        session.close();
        return true;
