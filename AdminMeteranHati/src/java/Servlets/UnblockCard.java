@@ -20,7 +20,7 @@ import model.Transaksi;
  *
  * @author Lenovo
  */
-@WebServlet(name = "BlockCard", urlPatterns = {"/BlockCard"})
+@WebServlet(name = "UnblockCard", urlPatterns = {"/UnblockCard"})
 public class UnblockCard extends HttpServlet {
 
     /**
@@ -78,7 +78,7 @@ public class UnblockCard extends HttpServlet {
         System.out.println("insert get AddCard");
         String idCard = request.getParameter("id-unblocked");
         String ket = request.getParameter("reason-unblocked");
-        System.out.println("id blocked: "+idCard);
+        System.out.println("id unblocked: "+idCard);
         DataAkses da = new DataAkses();
         boolean status = da.cekCard(idCard);
         try{
@@ -91,17 +91,17 @@ public class UnblockCard extends HttpServlet {
                 t.setKeterangan(ket);
                 t.setStatusTransaksi("unblock");
                 da.insertTransaksi(t);
-                
+                response.sendRedirect("unblockResponse.jsp?code=success&id="+idCard);
             }else{
                 System.out.println("failed");
                 response.sendRedirect("unblockResponse.jsp?code=fail");
             }
         }
-        }catch(IOException e){
-            System.out.println("has been block");
-            response.sendRedirect("unblockResponse.jsp?code=exist");
+        }catch(Exception e){
+            System.out.println("has been unblock");
+            response.sendRedirect("unblockResponse.jsp?code=exist&id="+idCard);
         }
-            response.sendRedirect("unblockResponse.jsp?code=success&id="+idCard);
+            
        
     }
 

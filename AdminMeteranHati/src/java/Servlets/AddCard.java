@@ -88,28 +88,30 @@ public class AddCard extends HttpServlet {
         System.out.println("name: "+name);
         DataAkses da = new DataAkses();
         boolean status = da.cekCard(idCard);
-        if(status){
-            User user = new User();
-            user.setNama(name);
-            user.setRfid(idCard);
-            user.setSaldo(10000);
-            user.setStatusKartu("aktif");
-            if(da.insertUser(user)){
-                System.out.println("berhasil menambahkan user");
-                Transaksi t = new Transaksi();
-                t.setDate(new Date());
-                t.setRfid(idCard);
-                t.setKeterangan("menambahkan kartu "+idCard);
-                t.setStatusTransaksi("add");
-                da.insertTransaksi(t);
-                response.sendRedirect("addResponse.jsp?code=success&id="+idCard);
-            }else{
-                System.out.println("failed");
-                response.sendRedirect("addResponse.jsp?code=fail");
+        try{
+            if(status){
+                User user = new User();
+                user.setNama(name);
+                user.setRfid(idCard);
+                user.setSaldo(10000);
+                user.setStatusKartu("aktif");
+                if(da.insertUser(user)){
+                    System.out.println("berhasil menambahkan user");
+                    Transaksi t = new Transaksi();
+                    t.setDate(new Date());
+                    t.setRfid(idCard);
+                    t.setKeterangan("menambahkan kartu "+idCard);
+                    t.setStatusTransaksi("add");
+                    da.insertTransaksi(t);
+                    response.sendRedirect("addResponse.jsp?code=success&id="+idCard);
+                }else{
+                    System.out.println("failed");
+                    response.sendRedirect("addResponse.jsp?code=fail");
+                }
             }
-        }else{
+        }catch(Exception e){
             System.out.println("sudah ada");
-            response.sendRedirect("addResponse.jsp?code=exist");
+            response.sendRedirect("addResponse.jsp?code=exist&id="+idCard);
         }
     }
 

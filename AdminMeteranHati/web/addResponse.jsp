@@ -52,7 +52,7 @@
             }else{
             %>
         <div class="col-md-12 section-heading text-center">
-            <h2 class="to-animate">Already Exist!!</h2>
+            <h2 class="to-animate"><%=id%>'s Already Exist!!</h2>
         </div>
         <%}%>
         <div class="col-md-12 text-center">

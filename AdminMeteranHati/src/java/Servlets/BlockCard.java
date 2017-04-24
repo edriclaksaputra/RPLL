@@ -97,9 +97,9 @@ public class BlockCard extends HttpServlet {
                 response.sendRedirect("blockResponse.jsp?code=fail");
             }
         }
-        }catch(IOException e){
+        }catch(Exception e){
             System.out.println("has been block");
-            response.sendRedirect("blockResponse.jsp?code=exist");
+            response.sendRedirect("blockResponse.jsp?code=exist&id="+idCard);
         }
             
        
