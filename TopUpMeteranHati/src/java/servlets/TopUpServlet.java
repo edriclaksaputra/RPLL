@@ -68,21 +68,25 @@ public class TopUpServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String id = request.getParameter("rfid");
-        int duit = Integer.parseInt(request.getParameter("duit"));
-        
+        String value = request.getParameter("duit");
+
         boolean status = false;
-        
-        status = new DataAkses().updateDuitUser(id, duit);
-       
+
         System.out.println(status);
-        if(status == true){
-            User userLogin = new DataAkses().getUser(id);
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp?hasil=Terimakasih, username dengan id : "+id+" telah berhasil di top up sebesar : "+duit+" Rupiah, Total Saldo : "+userLogin.getSaldo());
+        if (value == null) {
+            RequestDispatcher rd = request.getRequestDispatcher("topup.jsp?hasil=Mohon Input Nominal Top Up");
             rd.forward(request, response);
-        }
-        else{
-            RequestDispatcher rd = request.getRequestDispatcher("topup.jsp?hasil=MAMPUS KARTU DI BLOCK");
-            rd.forward(request, response);
+        } else {
+            int duit = Integer.parseInt(value);
+            status = new DataAkses().updateDuitUser(id, duit);
+            if (status == true) {
+                User userLogin = new DataAkses().getUser(id);
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?hasil=Terimakasih, username dengan id : " + id + " telah berhasil di top up sebesar : " + duit + " Rupiah, Total Saldo : " + userLogin.getSaldo());
+                rd.forward(request, response);
+            } else {
+                RequestDispatcher rd = request.getRequestDispatcher("topup.jsp?hasil=MAMPUS KARTU DI BLOCK");
+                rd.forward(request, response);
+            }
         }
     }
 
